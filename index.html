@@ -13,57 +13,18 @@
 <!-- MATRIX BACKGROUND -->
 <canvas id="matrix"></canvas>
 
-<!-- NEURAL CORE -->
-<div id="neural-core"></div>
-
 <header>
   <h1>Glentech Developer Website by Glentech</h1>
-  <p>🎉 Happy New Year!</p>
+  <p>Happy New Year 🎉</p>
 </header>
 
-<section id="stats">
-  <h2>Visitors & Views</h2>
-  <div class="counter" id="visitorCount">0</div>
-</section>
-
-<section id="categories">
-  <div class="card">
-    <h3>Movies</h3>
-    <button onclick="window.open('https://glenmoviescomke.vercel.app/', '_blank')">Visit</button>
-  </div>
-  <div class="card">
-    <h3>Music</h3>
-    <button>Visit</button>
-  </div>
-  <div class="card">
-    <h3>AI</h3>
-    <button onclick="window.open('https://ai-k9qa.onrender.com/', '_blank')">Visit</button>
-  </div>
-</section>
-
-<section id="developer">
-  <h2>About Glentech</h2>
-  <p>We are a developer group, only two masterminds behind this site, both named Glenn.</p>
-</section>
-
-<section id="contact">
-  <h2>Reach the masterminds</h2>
-  <a href="https://wa.me/254718190267" target="_blank">Glen via WhatsApp</a><br>
-  <a href="https://wa.me/254104882369" target="_blank">GlentechKenya via WhatsApp</a>
-</section>
-
-<section id="follow">
-  <h2>Follow Us</h2>
-  <a href="https://whatsapp.com/channel/0029VbBz7he0G0XhFAUWt70P" target="_blank">WhatsApp Channel</a>
-</section>
-
-<!-- IP STALKER -->
+<!-- IP STALKER (TOP) -->
 <section id="ip-stalker">
-  <h2>GIFTED • IP STALKER</h2>
+  <h2>System Intelligence</h2>
 
   <div class="ip-grid">
     <div class="ip-box">
-      <span>Your IP Address</span>
+      <span>Your IP</span>
       <strong id="ip">Loading…</strong>
     </div>
 
@@ -73,32 +34,58 @@
     </div>
 
     <div class="ip-box">
-      <span>Server Runtime</span>
+      <span>Runtime</span>
       <strong id="runtime">0d 0h 0m</strong>
     </div>
-
-    <div class="ip-box">
-      <span>RAM Usage</span>
-      <strong>2.43 GB / 7.76 GB</strong>
-      <div class="ram"><div></div></div>
-    </div>
-
-    <div class="ip-box">
-      <span>Total Requests</span>
-      <strong id="requests">0</strong>
-    </div>
   </div>
 </section>
 
-<!-- ADMIN PANEL -->
-<section id="admin">
-  <h2>ADMIN DASHBOARD</h2>
-  <div class="admin-box">
-    <p>Status: <span class="online">ONLINE</span></p>
-    <p>System: Stable</p>
-    <p>Security: Encrypted</p>
+<!-- SPEEDOMETER -->
+<section id="stats">
+  <h2>Live Traffic Monitor</h2>
+  <canvas id="speedometer" width="260" height="160"></canvas>
+  <div class="speed-value">
+    <span id="views">0</span>
+    <small>Views</small>
   </div>
 </section>
+
+<!-- CATEGORIES -->
+<section id="categories">
+  <div class="card">
+    <h3>Movies</h3>
+    <button onclick="window.open('https://glenmoviescomke.vercel.app/', '_blank')">Visit</button>
+  </div>
+
+  <div class="card">
+    <h3>Music</h3>
+    <button>Visit</button>
+  </div>
+
+  <div class="card">
+    <h3>AI</h3>
+    <button onclick="window.open('https://ai-k9qa.onrender.com/', '_blank')">Visit</button>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="developer">
+  <h2>Who We Are</h2>
+  <p>We are Glentech — two coding geniuses named Glenn, building futuristic digital systems.</p>
+</section>
+
+<!-- FOOTER / CONTACT -->
+<footer>
+  <h3>We don’t code. We engineer the future.</h3>
+  <p>Reach the masterminds</p>
+
+  <a href="https://wa.me/254718190267" target="_blank">Glen</a>
+  <a href="https://wa.me/254104882369" target="_blank">Glentech Kenya</a>
+
+  <p class="copyright">
+    Coding Geniuses Vibe © 2026 — Glentech Kenya
+  </p>
+</footer>
 
 <script src="script.js"></script>
 </body>
