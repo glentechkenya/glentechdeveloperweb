@@ -1,4 +1,4 @@
-/* Basic Reset */
+/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -7,58 +7,83 @@
 }
 
 body {
-    background-color: #0f0f0f;
-    color: #00ff00;
+    background: black;
+    color: #00f; /* Blue text */
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
 }
 
+/* Matrix Canvas */
+#matrix {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* Header */
 header {
     text-align: center;
     padding: 20px;
 }
 
 .subtitle {
-    color: #00ff99;
+    color: #00aaff;
     font-size: 0.9em;
 }
 
-.matrix-section {
-    margin: 20px 0;
-}
-
-.matrix span {
-    font-size: 2em;
-    color: #00ff00;
-    margin: 0 2px;
-    animation: flicker 1s infinite;
-}
-
-@keyframes flicker {
-    0%, 100% {opacity: 1;}
-    50% {opacity: 0.2;}
-}
-
-.ip-section, .views-section {
+/* IP Tracker */
+.ip-section {
     margin: 20px;
     text-align: center;
 }
 
 .ip-tracker {
     font-size: 1.2em;
-    color: #00ffcc;
+    color: #00f;
 }
 
+/* Links */
+.links-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.cool-link {
+    color: #00f;
+    text-decoration: none;
+    margin: 10px;
+    font-size: 1.2em;
+    transition: 0.3s;
+}
+
+.cool-link:hover {
+    color: #0ff;
+    transform: scale(1.1);
+}
+
+/* Views Section */
+.views-section {
+    margin: 20px;
+    text-align: center;
+}
+
+/* Footer */
 footer {
     margin-top: auto;
     padding: 15px;
     text-align: center;
-    border-top: 1px solid #00ff00;
+    border-top: 1px solid #00f;
 }
 
 .footer-tagline {
     font-size: 0.9em;
-    color: #00ffaa;
+    color: #00aaff;
 }
