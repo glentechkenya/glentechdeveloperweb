@@ -3,43 +3,73 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Glentech Kenya</title>
+<title>Glentech Kenya | Cool Edition</title>
 <link rel="stylesheet" href="style.css">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-<!-- Matrix Background -->
+
 <canvas id="matrix"></canvas>
 
-<!-- Header -->
 <header>
-    <h1>Glentech Kenya</h1>
-    <p class="subtitle">Made by GlentechKenya © 2026</p>
+  <h1>GLENTECH KENYA</h1>
+  <p class="tagline">Cool Coders • Digital Architects • Future Builders</p>
 </header>
 
-<!-- IP Tracker -->
-<section class="ip-section">
-    <div class="ip-tracker">
-        <p id="user-ip">Loading IP...</p>
-    </div>
+<section class="status-bar">
+  <div id="battery">🔋 Battery: --%</div>
+  <div id="clock">⏱ --:--:--</div>
 </section>
 
-<!-- Links Section -->
-<section class="links-section">
-    <a href="https://glenmoviescomke.vercel.app" class="cool-link">Watch Movies Here</a>
-    <a href="https://backend-8472.onrender.com" class="cool-link">Backend Dashboard</a>
+<section class="ip-box">
+  <span id="user-ip">Fetching IP...</span>
 </section>
 
-<!-- Visitor Views Section -->
-<section class="views-section">
-    <h2>Visitor Views</h2>
-    <canvas id="viewsChart" width="400" height="400"></canvas>
+<section class="speedometer">
+  <h2>Live Visitors</h2>
+  <canvas id="gauge" width="300" height="150"></canvas>
+  <div id="visitor-number">0</div>
 </section>
 
-<!-- Footer -->
+<section class="categories">
+  <div class="card" onclick="goAI()">
+    <i class="fas fa-robot"></i>
+    <span>AI LAB</span>
+  </div>
+
+  <div class="card" onclick="goMovies()">
+    <i class="fas fa-film"></i>
+    <span>MOVIES</span>
+  </div>
+
+  <div class="card">
+    <i class="fas fa-music"></i>
+    <span>MUSIC MODE</span>
+  </div>
+
+  <div class="card" onclick="goWhatsApp()">
+    <i class="fab fa-whatsapp"></i>
+    <span>FOLLOW US</span>
+  </div>
+</section>
+
+<section class="about">
+  <p>
+    We are <strong>Glen</strong>.  
+    We are <strong>Glentech</strong>.  
+    We don’t just write code — we bend reality with logic.
+  </p>
+  <p>
+    Clean code. Dark vibes.  
+    Systems that breathe. Interfaces that feel alive.
+  </p>
+  <p>
+    If it runs on the web — we can rebuild it better.
+  </p>
+</section>
+
 <footer>
-    <p>Contact us: codinggenius@viber.com</p>
-    <p class="footer-tagline">We are coding genius Viber © 2026</p>
+  <p>We are coding genius vibers © 2026</p>
 </footer>
 
 <script src="script.js"></script>
