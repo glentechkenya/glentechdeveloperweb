@@ -1,33 +1,111 @@
-<section class="ip-tool">
-  <h2>🌐 GLENTECH IP ANALYZER</h2>
-  <p>Advanced Network Intelligence Tool</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glentech Kenya Developer Website</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  /* Global Styles */
+  * {margin:0; padding:0; box-sizing:border-box;}
+  body {font-family:'Orbitron', sans-serif; background:#0d0d0d; color:#00f0ff; scroll-behavior: smooth;}
+  a {text-decoration:none; color:#00f0ff;}
+  section {padding:80px 20px; text-align:center;}
 
-  <div class="ip-box">
-    <input id="ipInput" type="text" placeholder="Enter IP address e.g 41.90.70.195">
-    <button onclick="scanIP()">Analyze</button>
+  /* Header */
+  header {background:#050505; padding:40px 20px; border-bottom: 1px solid #00f0ff;}
+  header h1 {font-size:2.5rem; color:#00f0ff; text-shadow: 0 0 10px #0ff, 0 0 20px #00f0ff;}
+  header p {font-size:1.2rem; margin-top:10px; color:#0ff; text-shadow: 0 0 10px #0ff;}
+
+  /* Visitor Counter */
+  #stats {background:#0a0a0a; border:1px solid #00f0ff; border-radius:15px; width:300px; margin:40px auto; padding:30px; box-shadow: 0 0 20px #00f0ff;}
+  #stats h2 {font-size:1.5rem; margin-bottom:20px; color:#00f0ff; text-shadow:0 0 10px #0ff;}
+  .counter {font-size:2rem; color:#0ff; text-shadow:0 0 20px #0ff;}
+
+  /* Categories */
+  #categories {display:flex; flex-wrap:wrap; justify-content:center; gap:30px; margin-top:40px;}
+  .card {background:#0a0a0a; border:1px solid #00f0ff; border-radius:15px; width:250px; padding:20px; transition:0.3s; cursor:pointer; box-shadow: 0 0 10px #00f0ff;}
+  .card:hover {transform:scale(1.05); box-shadow:0 0 30px #00f0ff, 0 0 40px #0ff;}
+  .card h3 {margin-bottom:15px; text-shadow:0 0 10px #0ff;}
+  .card button {padding:10px 20px; border:none; border-radius:8px; background:#00f0ff; color:#050505; font-weight:bold; cursor:pointer; transition:0.3s; box-shadow:0 0 10px #0ff;}
+  .card button:hover {background:#0ff; box-shadow:0 0 20px #0ff;}
+
+  /* Developer Section */
+  #developer {margin-top:60px;}
+  #developer h2 {font-size:1.8rem; margin-bottom:10px; text-shadow:0 0 10px #0ff;}
+  #developer p {font-size:1.1rem; color:#0ff; text-shadow:0 0 5px #0ff;}
+
+  /* Contact */
+  #contact {margin-top:60px;}
+  #contact h2 {margin-bottom:20px; text-shadow:0 0 10px #0ff;}
+  #contact a {display:inline-block; padding:12px 25px; background:#00f0ff; color:#050505; border-radius:10px; font-weight:bold; transition:0.3s; box-shadow:0 0 10px #0ff; margin:5px 0;}
+  #contact a:hover {background:#0ff; box-shadow:0 0 20px #0ff;}
+
+  /* Follow Us */
+  #follow {margin-top:40px;}
+  #follow a {margin:0 10px; font-size:1.5rem; color:#00f0ff; transition:0.3s; text-shadow:0 0 5px #0ff;}
+  #follow a:hover {color:#0ff; text-shadow:0 0 20px #0ff;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Glentech Developer Website by Glentech</h1>
+  <p>🎉 Happy New Year!</p>
+</header>
+
+<section id="stats">
+  <h2>Visitors & Views</h2>
+  <div class="counter" id="visitorCount">0</div>
+</section>
+
+<section id="categories">
+  <div class="card">
+    <h3>Movies</h3>
+    <button onclick="window.open('https://glenmoviescomke.vercel.app/', '_blank')">Visit</button>
   </div>
+  <div class="card">
+    <h3>Music</h3>
+    <button onclick="alert('Coming Soon!')">Visit</button>
+  </div>
+  <div class="card">
+    <h3>AI</h3>
+    <button onclick="window.open('https://ai-k9qa.onrender.com/', '_blank')">Visit</button>
+  </div>
+</section>
 
-  <pre id="ipOutput">Waiting for input...</pre>
+<section id="developer">
+  <h2>About Glentech</h2>
+  <p>We are a developer group, only two masterminds behind this site, both named Glenn.</p>
+</section>
+
+<section id="contact">
+  <h2>Reach the masterminds</h2>
+  <a href="https://wa.me/254718190267" target="_blank">Glen via WhatsApp</a><br>
+  <a href="https://wa.me/254104882369" target="_blank">GlentechKenya via WhatsApp</a>
+</section>
+
+<section id="follow">
+  <h2>Follow Us</h2>
+  <a href="https://whatsapp.com/channel/0029VbBz7he0G0XhFAUWt70P" target="_blank">WhatsApp Channel</a>
 </section>
 
 <script>
-async function scanIP() {
-  const ip = document.getElementById("ipInput").value.trim();
-  const output = document.getElementById("ipOutput");
+  // Visitor Counter Animation
+  let count = 0;
+  const visitorCount = document.getElementById('visitorCount');
+  const target = 1234; // Replace with real visitor data
+  const speed = 50;
 
-  if (!ip) {
-    output.textContent = "❌ Please enter an IP address";
-    return;
-  }
-
-  output.textContent = "🔍 Scanning IP...";
-
-  try {
-    const res = await fetch(`/api/ipstalk?ip=${encodeURIComponent(ip)}`);
-    const data = await res.json();
-    output.textContent = JSON.stringify(data, null, 2);
-  } catch (e) {
-    output.textContent = "❌ Error: " + e;
-  }
-}
+  const updateCount = () => {
+    const increment = Math.ceil(target / speed);
+    count += increment;
+    if (count > target) count = target;
+    visitorCount.textContent = count;
+    if (count < target) setTimeout(updateCount, 50);
+  };
+  updateCount();
 </script>
+
+</body>
+</html>
