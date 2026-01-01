@@ -1,67 +1,70 @@
-// Visitor & View Counters per browser
-let visitorCount = localStorage.getItem('visitors') || 0;
-let viewCount = localStorage.getItem('views') || 0;
+// Visitor Counter
+let count = 0;
+const visitorCount = document.getElementById('visitorCount');
+const target = 1234; // Replace with real visitor data
+const speed = 50;
 
-visitorCount++;
-viewCount++;
+const updateCount = () => {
+  const increment = Math.ceil(target / speed);
+  count += increment;
+  if(count > target) count = target;
+  visitorCount.textContent = count;
+  if(count < target) setTimeout(updateCount, 50);
+};
+updateCount();
 
-localStorage.setItem('visitors', visitorCount);
-localStorage.setItem('views', viewCount);
-
-document.getElementById('visitors').textContent = visitorCount;
-document.getElementById('views').textContent = viewCount;
-
-// Particle Background
-const canvas = document.getElementById('particles');
+// Moving futuristic particles background
+const canvas = document.getElementById('background');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const particlesArray = [];
-const colors = ['#0ff','#ff0','#f0f','#0f0'];
+let particlesArray;
+const colors = ['#00f0ff','#0ff','#0077ff'];
 
 class Particle {
   constructor(){
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-    this.size = Math.random()*3+1;
-    this.speedX = Math.random()*1-0.5;
-    this.speedY = Math.random()*1-0.5;
+    this.x = Math.random()*canvas.width;
+    this.y = Math.random()*canvas.height;
+    this.size = Math.random()*2 + 1;
+    this.speedX = Math.random()*1 - 0.5;
+    this.speedY = Math.random()*1 - 0.5;
     this.color = colors[Math.floor(Math.random()*colors.length)];
   }
   update(){
     this.x += this.speedX;
     this.y += this.speedY;
-    if(this.x<0 || this.x>canvas.width) this.speedX*=-1;
-    if(this.y<0 || this.y>canvas.height) this.speedY*=-1;
+    if(this.x > canvas.width) this.x = 0;
+    if(this.x < 0) this.x = canvas.width;
+    if(this.y > canvas.height) this.y = 0;
+    if(this.y < 0) this.y = canvas.height;
   }
   draw(){
     ctx.fillStyle = this.color;
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = this.color;
     ctx.beginPath();
-    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
     ctx.fill();
   }
 }
 
 function init(){
-  for(let i=0;i<100;i++){
+  particlesArray = [];
+  for(let i=0;i<200;i++){
     particlesArray.push(new Particle());
   }
 }
-
 function animate(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  particlesArray.forEach(p=>{
-    p.update();
-    p.draw();
-  });
+  particlesArray.forEach(p=>{p.update(); p.draw();});
   requestAnimationFrame(animate);
 }
-
-init();
-animate();
-
 window.addEventListener('resize', ()=>{
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
+  init();
 });
+
+init();
+animate();
