@@ -1,127 +1,176 @@
-/* Reset & Basics */
+/* ============================
+   GLENTECH KENYA – GLOBAL STYLE
+   ============================ */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Orbitron', sans-serif;
 }
 
 body {
-  background: #0d0d0d;
-  color: #fff;
+  background: radial-gradient(circle at top, #050505, #000000);
+  color: #e6faff;
+  font-family: "Segoe UI", Arial, sans-serif;
+  min-height: 100vh;
   overflow-x: hidden;
-  position: relative;
 }
 
-/* Particle Background */
-#particles {
-  position: fixed;
-  top:0;
-  left:0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
+/* ============================
+   HEADER
+   ============================ */
 
-/* Hero */
-.hero {
-  text-align: center;
-  padding: 80px 20px;
-}
-
-.hero h1 {
-  font-size: 3rem;
-  color: #0ff;
-  text-shadow: 0 0 10px #0ff, 0 0 20px #f0f;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  margin: 15px 0 40px;
-}
-
-.counters {
+header {
   display: flex;
-  justify-content: center;
-  gap: 40px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 22px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.15);
 }
 
-.counter span {
-  font-size: 2rem;
-  color: #ff0;
+header h1 {
+  font-size: 20px;
+  color: #00f6ff;
+  letter-spacing: 1px;
 }
 
-/* Showcase */
-.showcase {
-  padding: 60px 20px;
-  text-align: center;
+header span {
+  color: #00ff9c;
 }
 
-.showcase h2 {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: #ff00ff;
-  text-shadow: 0 0 5px #ff0;
+/* ============================
+   BUTTONS
+   ============================ */
+
+button {
+  background: linear-gradient(135deg, #00f6ff, #00ff9c);
+  color: #000;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 14px rgba(0, 255, 255, 0.5);
 }
 
-.card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid #0ff;
-  border-radius: 20px;
-  padding: 30px;
-  width: 300px;
-  transition: transform 0.3s, box-shadow 0.3s;
+/* ============================
+   SECTIONS
+   ============================ */
+
+section {
+  padding: 40px 18px;
+  max-width: 1000px;
+  margin: auto;
 }
 
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #0ff, 0 0 40px #f0f;
+section h2 {
+  color: #00f6ff;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
 }
 
-.card h3 {
-  margin-bottom: 15px;
-  color: #ff0;
-}
-
-.card p {
+section p {
+  opacity: 0.85;
   margin-bottom: 20px;
 }
 
-.btn, .icon-btn {
-  display: inline-block;
-  padding: 10px 20px;
-  color: #0ff;
-  text-decoration: none;
-  border: 1px solid #0ff;
-  border-radius: 10px;
-  transition: all 0.3s;
+/* ============================
+   IP ANALYZER TOOL
+   ============================ */
+
+.ip-tool {
+  background: linear-gradient(180deg, #070707, #000);
+  border-radius: 16px;
+  padding: 28px 22px;
+  box-shadow: 0 0 35px rgba(0, 255, 255, 0.18);
+  border: 1px solid rgba(0, 255, 255, 0.12);
 }
 
-.btn:hover, .icon-btn:hover {
-  background: #0ff;
-  color: #000;
+.ip-tool h2 {
+  text-align: center;
 }
 
-/* Footer */
+.ip-tool p {
+  text-align: center;
+  font-size: 14px;
+}
+
+.ip-box {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ip-box input {
+  width: 260px;
+  padding: 11px;
+  background: #050505;
+  border: 1px solid #00f6ff;
+  color: #00f6ff;
+  border-radius: 8px;
+  outline: none;
+}
+
+.ip-box input::placeholder {
+  color: #007a80;
+}
+
+.ip-box button {
+  min-width: 110px;
+}
+
+#ipOutput {
+  background: #020202;
+  color: #00ff9c;
+  padding: 18px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.45;
+  max-height: 360px;
+  overflow-y: auto;
+  box-shadow: inset 0 0 12px rgba(0, 255, 255, 0.08);
+}
+
+/* ============================
+   FOOTER
+   ============================ */
+
 footer {
   text-align: center;
-  padding: 30px 20px;
-  margin-top: 50px;
-  font-size: 0.9rem;
-  color: #999;
+  padding: 20px;
+  font-size: 13px;
+  opacity: 0.6;
+  border-top: 1px solid rgba(0, 255, 255, 0.12);
+  margin-top: 40px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .cards {
-    flex-direction: column;
-    align-items: center;
+footer span {
+  color: #00f6ff;
+}
+
+/* ============================
+   MOBILE OPTIMIZATION
+   ============================ */
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 17px;
+  }
+
+  section {
+    padding: 30px 14px;
+  }
+
+  .ip-box input {
+    width: 100%;
   }
 }
