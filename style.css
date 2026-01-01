@@ -1,89 +1,85 @@
-/* Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Courier New', monospace;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Consolas, monospace;
 }
 
 body {
-    background: black;
-    color: #00f; /* Blue text */
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
+  background: black;
+  color: #007bff;
+  text-align: center;
+  overflow-x: hidden;
 }
 
-/* Matrix Canvas */
 #matrix {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
 }
 
-/* Header */
 header {
-    text-align: center;
-    padding: 20px;
+  padding: 20px;
 }
 
-.subtitle {
-    color: #00aaff;
-    font-size: 0.9em;
+.tagline {
+  color: #3399ff;
+  font-size: 0.9rem;
 }
 
-/* IP Tracker */
-.ip-section {
-    margin: 20px;
-    text-align: center;
+.status-bar {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+  font-size: 0.9rem;
 }
 
-.ip-tracker {
-    font-size: 1.2em;
-    color: #00f;
+.ip-box {
+  margin: 10px;
 }
 
-/* Links */
-.links-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
+.speedometer {
+  margin: 20px auto;
 }
 
-.cool-link {
-    color: #00f;
-    text-decoration: none;
-    margin: 10px;
-    font-size: 1.2em;
-    transition: 0.3s;
+#visitor-number {
+  font-size: 2rem;
+  margin-top: 5px;
 }
 
-.cool-link:hover {
-    color: #0ff;
-    transform: scale(1.1);
+.categories {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  padding: 20px;
 }
 
-/* Views Section */
-.views-section {
-    margin: 20px;
-    text-align: center;
+.card {
+  border: 1px solid #007bff;
+  padding: 20px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-/* Footer */
+.card:hover {
+  background: rgba(0,123,255,0.1);
+  transform: scale(1.05);
+}
+
+.card i {
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.about {
+  padding: 20px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
 footer {
-    margin-top: auto;
-    padding: 15px;
-    text-align: center;
-    border-top: 1px solid #00f;
-}
-
-.footer-tagline {
-    font-size: 0.9em;
-    color: #00aaff;
+  border-top: 1px solid #007bff;
+  padding: 10px;
+  font-size: 0.8rem;
 }
