@@ -1,42 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glentech Kenya</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glentech Kenya</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Glentech Kenya</h1>
-        <p class="subtitle">Made by GlentechKenya © 2026</p>
-    </header>
+<!-- Matrix Background -->
+<canvas id="matrix"></canvas>
 
-    <section class="matrix-section">
-        <div class="matrix">
-            <span>1</span><span>0</span><span>1</span><span>0</span><span>0</span>
-            <span>1</span><span>1</span><span>1</span><span>0</span><span>0</span>
-        </div>
-    </section>
+<!-- Header -->
+<header>
+    <h1>Glentech Kenya</h1>
+    <p class="subtitle">Made by GlentechKenya © 2026</p>
+</header>
 
-    <section class="ip-section">
-        <h2>Your IP Tracker</h2>
-        <div class="ip-tracker">
-            <p id="user-ip">Loading IP...</p>
-        </div>
-    </section>
+<!-- IP Tracker -->
+<section class="ip-section">
+    <div class="ip-tracker">
+        <p id="user-ip">Loading IP...</p>
+    </div>
+</section>
 
-    <section class="views-section">
-        <h2>Visitor Views</h2>
-        <canvas id="viewsChart" width="400" height="400"></canvas>
-    </section>
+<!-- Links Section -->
+<section class="links-section">
+    <a href="https://glenmoviescomke.vercel.app" class="cool-link">Watch Movies Here</a>
+    <a href="https://backend-8472.onrender.com" class="cool-link">Backend Dashboard</a>
+</section>
 
-    <footer>
-        <p>Contact us: codinggenius@viber.com</p>
-        <p class="footer-tagline">We are coding genius Viber © 2026</p>
-    </footer>
+<!-- Visitor Views Section -->
+<section class="views-section">
+    <h2>Visitor Views</h2>
+    <canvas id="viewsChart" width="400" height="400"></canvas>
+</section>
 
-    <script src="script.js"></script>
+<!-- Footer -->
+<footer>
+    <p>Contact us: codinggenius@viber.com</p>
+    <p class="footer-tagline">We are coding genius Viber © 2026</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
