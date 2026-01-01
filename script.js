@@ -1,70 +1,66 @@
-// Visitor Counter
-let count = 0;
-const visitorCount = document.getElementById('visitorCount');
-const target = 1234; // Replace with real visitor data
-const speed = 50;
+/* MATRIX EFFECT */
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+canvas.width = innerWidth;
+canvas.height = innerHeight;
 
-const updateCount = () => {
-  const increment = Math.ceil(target / speed);
-  count += increment;
-  if(count > target) count = target;
-  visitorCount.textContent = count;
-  if(count < target) setTimeout(updateCount, 50);
-};
-updateCount();
+const letters = "01GLENTECHAI";
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+const drops = Array(Math.floor(columns)).fill(1);
 
-// Moving futuristic particles background
-const canvas = document.getElementById('background');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+function drawMatrix() {
+  ctx.fillStyle = "rgba(0,0,0,0.05)";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = "#00f0ff";
+  ctx.font = fontSize + "px monospace";
 
-let particlesArray;
-const colors = ['#00f0ff','#0ff','#0077ff'];
-
-class Particle {
-  constructor(){
-    this.x = Math.random()*canvas.width;
-    this.y = Math.random()*canvas.height;
-    this.size = Math.random()*2 + 1;
-    this.speedX = Math.random()*1 - 0.5;
-    this.speedY = Math.random()*1 - 0.5;
-    this.color = colors[Math.floor(Math.random()*colors.length)];
-  }
-  update(){
-    this.x += this.speedX;
-    this.y += this.speedY;
-    if(this.x > canvas.width) this.x = 0;
-    if(this.x < 0) this.x = canvas.width;
-    if(this.y > canvas.height) this.y = 0;
-    if(this.y < 0) this.y = canvas.height;
-  }
-  draw(){
-    ctx.fillStyle = this.color;
-    ctx.shadowBlur = 10;
-    ctx.shadowColor = this.color;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
-    ctx.fill();
-  }
+  drops.forEach((y,i)=>{
+    const text = letters[Math.floor(Math.random()*letters.length)];
+    ctx.fillText(text, i*fontSize, y*fontSize);
+    if (y*fontSize > canvas.height && Math.random() > 0.975) drops[i]=0;
+    drops[i]++;
+  });
 }
+setInterval(drawMatrix, 33);
 
-function init(){
-  particlesArray = [];
-  for(let i=0;i<200;i++){
-    particlesArray.push(new Particle());
-  }
-}
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  particlesArray.forEach(p=>{p.update(); p.draw();});
-  requestAnimationFrame(animate);
-}
-window.addEventListener('resize', ()=>{
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  init();
+/* VISITOR COUNTER */
+let visitors = 0;
+setInterval(()=>{
+  visitors += Math.floor(Math.random()*5)+1;
+  document.getElementById("visitorCount").textContent = visitors;
+},800);
+
+/* REAL IP STALKER (Gifted API) */
+fetch("https://api.giftedtech.co.ke/api/stalk/ipstalk?apikey=gifted")
+.then(res => res.json())
+.then(data => {
+  document.getElementById("ip").textContent =
+    data.ip || data.address || "Unavailable";
+})
+.catch(()=>{
+  document.getElementById("ip").textContent = "Protected";
 });
 
-init();
-animate();
+/* BATTERY */
+if (navigator.getBattery) {
+  navigator.getBattery().then(b=>{
+    document.getElementById("battery").textContent =
+      Math.floor(b.level*100)+"%";
+  });
+}
+
+/* SERVER RUNTIME */
+let mins = 0;
+setInterval(()=>{
+  mins++;
+  document.getElementById("runtime").textContent =
+    `${Math.floor(mins/1440)}d ${Math.floor(mins/60)%24}h ${mins%60}m`;
+},60000);
+
+/* REQUESTS */
+let req = 0;
+setInterval(()=>{
+  req += Math.floor(Math.random()*10);
+  document.getElementById("requests").textContent = req;
+},1200);
