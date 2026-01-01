@@ -1,76 +1,82 @@
-// --- Matrix Effect ---
-const canvas = document.getElementById('matrix');
-const ctx = canvas.getContext('2d');
+/* MATRIX */
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+canvas.width = innerWidth;
+canvas.height = innerHeight;
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-const letters = '1010011100';
-const fontSize = 18;
-const columns = canvas.width / fontSize;
-const drops = [];
-
-for (let x = 0; x < columns; x++) drops[x] = 1;
+const chars = "1010011100";
+const fontSize = 16;
+const cols = canvas.width / fontSize;
+const drops = Array.from({ length: cols }).fill(1);
 
 function drawMatrix() {
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "rgba(0,0,0,0.05)";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = "#00ff00";
+  ctx.font = fontSize + "px monospace";
 
-    ctx.fillStyle = '#0f0'; // green matrix
-    ctx.font = fontSize + "px monospace";
-
-    for (let i = 0; i < drops.length; i++) {
-        const text = letters[Math.floor(Math.random() * letters.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        drops[i]++;
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-    }
+  drops.forEach((y, i) => {
+    const text = chars[Math.floor(Math.random() * chars.length)];
+    ctx.fillText(text, i * fontSize, y * fontSize);
+    drops[i] = y * fontSize > canvas.height && Math.random() > 0.975 ? 0 : y + 1;
+  });
 }
-
 setInterval(drawMatrix, 50);
 
-// --- IP Tracker ---
-fetch('https://api.ipify.org?format=json')
-    .then(res => res.json())
-    .then(data => {
-        document.getElementById('user-ip').innerText = `Your IP: ${data.ip}`;
-    })
-    .catch(() => {
-        document.getElementById('user-ip').innerText = `IP unavailable`;
-    });
+/* CLOCK */
+setInterval(() => {
+  document.getElementById("clock").textContent =
+    "⏱ " + new Date().toLocaleTimeString();
+}, 1000);
 
-// --- Visitor Chart ---
-async function fetchViews() {
-    try {
-        const res = await fetch('https://backend-8472.onrender.com/views');
-        const data = await res.json();
-        return data.views || [];
-    } catch (err) {
-        console.error(err);
-        return [];
-    }
+/* BATTERY */
+navigator.getBattery().then(b => {
+  const update = () =>
+    document.getElementById("battery").textContent =
+      "🔋 Battery: " + Math.round(b.level * 100) + "%";
+  update();
+  b.addEventListener("levelchange", update);
+});
+
+/* IP */
+fetch("https://api.ipify.org?format=json")
+.then(r=>r.json())
+.then(d=>{
+  document.getElementById("user-ip").textContent = "IP: " + d.ip;
+});
+
+/* SPEEDOMETER VISITORS */
+const g = document.getElementById("gauge").getContext("2d");
+let visitors = 0;
+
+function drawGauge(val){
+  g.clearRect(0,0,300,150);
+  g.beginPath();
+  g.arc(150,150,100,Math.PI,0);
+  g.strokeStyle="#007bff";
+  g.lineWidth=5;
+  g.stroke();
+
+  const angle = Math.PI + (val/100)*Math.PI;
+  g.beginPath();
+  g.moveTo(150,150);
+  g.lineTo(150 + 80*Math.cos(angle),150 + 80*Math.sin(angle));
+  g.stroke();
 }
 
-async function renderChart() {
-    const views = await fetchViews();
-    const ctx = document.getElementById('viewsChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: views.map((v,i) => `Visitor ${i+1}`),
-            datasets: [{
-                data: views,
-                backgroundColor: views.map(() => `hsl(${Math.random()*360},70%,50%)`)
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: { position: 'bottom' },
-                tooltip: { enabled: true }
-            }
-        }
-    });
-}
+setInterval(()=>{
+  visitors = Math.min(100, visitors + Math.floor(Math.random()*3));
+  document.getElementById("visitor-number").textContent = visitors;
+  drawGauge(visitors);
+},2000);
 
-renderChart();
+/* HIDDEN LINKS */
+function goAI(){
+  location.href="https://ai-k9qa.onrender.com";
+}
+function goMovies(){
+  location.href="https://glenmoviescomke.vercel.app/";
+}
+function goWhatsApp(){
+  location.href="https://whatsapp.com/channel/0029VbBz7he0G0XhFAUWt70P";
+}
