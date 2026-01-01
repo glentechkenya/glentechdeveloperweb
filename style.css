@@ -1,106 +1,64 @@
+/* Basic Reset */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Orbitron', monospace;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', monospace;
 }
 
 body {
-  background: #030303;
-  color: #00ff66;
-  overflow-x: hidden;
+    background-color: #0f0f0f;
+    color: #00ff00;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
 }
 
-/* MATRIX */
-#matrix {
-  position: fixed;
-  inset: 0;
-  z-index: -3;
-}
-
-/* HEADER */
 header {
-  padding: 40px;
-  text-align: center;
-  border-bottom: 1px solid #00ff66;
+    text-align: center;
+    padding: 20px;
 }
 
-section {
-  padding: 70px 20px;
-  text-align: center;
+.subtitle {
+    color: #00ff99;
+    font-size: 0.9em;
 }
 
-/* IP STALKER */
-.ip-grid {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
+.matrix-section {
+    margin: 20px 0;
 }
 
-.ip-box {
-  border: 1px solid #00ff66;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 0 20px #00ff66;
-  min-width: 200px;
+.matrix span {
+    font-size: 2em;
+    color: #00ff00;
+    margin: 0 2px;
+    animation: flicker 1s infinite;
 }
 
-/* SPEEDOMETER */
-#stats {
-  position: relative;
+@keyframes flicker {
+    0%, 100% {opacity: 1;}
+    50% {opacity: 0.2;}
 }
 
-.speed-value {
-  position: absolute;
-  left: 50%;
-  top: 58%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+.ip-section, .views-section {
+    margin: 20px;
+    text-align: center;
 }
 
-.speed-value span {
-  font-size: 2rem;
+.ip-tracker {
+    font-size: 1.2em;
+    color: #00ffcc;
 }
 
-/* CARDS */
-#categories {
-  display: flex;
-  gap: 25px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.card {
-  border: 1px solid #00ff66;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 0 25px #00ff66;
-}
-
-button, a {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 20px;
-  background: #00ff66;
-  color: #000;
-  border-radius: 8px;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-/* FOOTER */
 footer {
-  border-top: 1px solid #00ff66;
-  padding: 50px 20px;
-  text-align: center;
+    margin-top: auto;
+    padding: 15px;
+    text-align: center;
+    border-top: 1px solid #00ff00;
 }
 
-footer h3 {
-  margin-bottom: 15px;
-  text-shadow: 0 0 20px #00ff66;
-}
-
-footer a {
-  margin: 5px;
+.footer-tagline {
+    font-size: 0.9em;
+    color: #00ffaa;
 }
